@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+    var userInfo = ViewBag.UserInfo as GoogleUserInfo;
+}
+
+@if (userInfo == null)
+{
+    <div class="google-btn" onclick="location.href='/home/GoogleLoginRedirect'">
+		<div class="google-icon-wrapper">
+            <img class="google-icon" src="~/image/google_logo.svg" alt="Google İle Giriş Yap" />
+        </div>
+        <p class="btn-text" >Google İle Giriş Yap</p>
+    </div>
+}
+else
+{
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>@userInfo.Id</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>@userInfo.Email</td>
+        </tr>
+        <tr>
+            <td>Email Doğrulama</td>
+            <td>@userInfo.VerifiedEmail</td>
+        </tr>
+        <tr>
+            <td>Tam Adı</td>
+            <td>@userInfo.Name</td>
+        </tr>
+        <tr>
+            <td>Adı</td>
+            <td>@userInfo.GivenName</td>
+        </tr>
+        <tr>
+            <td>Soyadı</td>
+            <td>@userInfo.FamilyName</td>
+        </tr>
+        <tr>
+            <td>Profil Resmi</td>
+            <td><img src="@userInfo.Picture" alt="picture"></td>
+        </tr>
+        <tr>
+            <td>Dil</td>
+            <td>@userInfo.Locale</td>
+        </tr>
+    </table>
+}
+<style>
+    table, tr, td {
+        border: solid 1px
+    }
+</style>
